@@ -4,6 +4,15 @@ from django.contrib.auth.models import User
 #from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('home') 
+
 class Bigpic(models.Model):
     title = models.CharField(max_length = 255, default = '') #title first picture
     first_pic = models.ImageField(null=False, blank=False, upload_to="images/", default = '') 
@@ -25,9 +34,13 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255)
     post_author = models.ForeignKey(User, on_delete = models.CASCADE, default = 'admin')
     body = RichTextField(blank=True, null=True)
-    #post_date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=255, default = 'coding')
+    post_date = models.DateField(auto_now_add=True)
+    #category = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, related_name = "categories", on_delete = models.CASCADE)
     snippet = models.CharField(max_length=255)      
     
     def __str__(self):
         return self.post_title + ' | ' + str(self.post_author)
+
+    class Meta:
+        ordering = ('-post_date',)

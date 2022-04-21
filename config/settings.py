@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=7*3yzo-#!188l0ev0w$)$s1a&k(9nw6nman7k^j&cl5&7dd!(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'hamyon',
+    'hitcount',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'hamyon.views.category_list',
             ],
         },
     },
@@ -131,3 +133,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #AUTH_USER_MODEL =  'accounts.CustomUserModel' # new
+
+HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 2 }
+HITCOUNT_KEEP_HIT_IN_DATABASE = { 'days': 2 }

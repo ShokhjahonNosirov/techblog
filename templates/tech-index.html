@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load hitcount_tags %}
 
 {% block title %}tech-blog{% endblock %}
 
@@ -20,10 +21,8 @@
                                     <div class="shadoweffect">
                                         <div class="shadow-desc">
                                             <div class="blog-meta">
-                                                <span class="bg-orange"><a href="tech-category-01.html" title="">Technology</a></span>
                                                 <h4><a href="#" title="">{{ po.title }}</a></h4>
-                                                <small><a href="#" title="">24 July, 2017</a></small>
-                                                <small><a href="#" title="">by Amanda</a></small>
+                                                <small><a href="#" title="">Kategoriyalar</a></small>
                                             </div><!-- end meta -->
                                         </div><!-- end shadow-desc -->
                                     </div><!-- end shadow -->
@@ -35,10 +34,8 @@
                                 <div class="shadoweffect">
                                     <div class="shadow-desc">
                                         <div class="blog-meta">
-                                            <span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>
                                             <h4><a href="#" title="">{{ po.tit_sp1 }}</a></h4>
-                                            <small><a href="#" title="">03 July, 2017</a></small>
-                                            <small><a href="tech-author.html" title="">by Jessica</a></small>
+                                            <small><a href="#" title="">E-store</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end shadow-desc -->
                                 </div><!-- end shadow -->
@@ -51,10 +48,8 @@
                                 <div class="shadoweffect">
                                     <div class="shadow-desc">
                                         <div class="blog-meta">
-                                            <span class="bg-orange"><a href="tech-category-01.html" title="">Ad</a></span>
                                             <h4><a href="#" title="">{{ po.tit_sp2 }}</a></h4>
-                                            <small><a href="#" title="">01 July, 2017</a></small>
-                                            <small><a href="tech-author.html" title="">by Jessica</a></small>
+                                            <small><a href="#" title="">Kategoriyalar</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end shadow-desc -->
                                 </div><!-- end shadow -->
@@ -70,7 +65,7 @@
                         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                             <div class="page-wrapper">
                                 <div class="blog-top clearfix">
-                                    <h4 class="pull-left">Recent News <a href="#"><i class="fa fa-rss"></i></a></h4>
+                                    <h4 class="pull-left">Eng so'ngilari<a href="#"><i class="fa fa-rss"></i></a></h4>
                                 </div><!-- end blog-top -->
 
                             {% for post in post_menu %}
@@ -89,10 +84,10 @@
                                         <div class="blog-meta big-meta col-md-8">
                                             <h4><a href="{% url 'article-detail' post.pk %}" title="">{{post.post_title}}</a></h4>
                                             <p>{{post.snippet}}</p>
-                                            <small class="firstsmall"><a class="bg-orange" href="#">{{post.category}}</a></small>
-                                            <small><a href="{% url 'article-detail' post.pk %}">21 July, 2017</a></small>
+                                            <small class="firstsmall"><a class="bg-orange" href="{% url 'category' post.category.id %}">{{post.category}}</a></small>
+                                            <small><a href="{% url 'article-detail' post.pk %}">{{ post.post_date }}</a></small>
                                             <!-- <small><a href="tech-author.html" title="">by {{post.post_author}}</a></small> -->
-                                            <small><a href="{% url 'article-detail' post.pk %}" title=""><i class="fa fa-eye"></i> 1114</a></small>
+                                        <small><a href="{% url 'article-detail' post.pk %}" title=""><i class="fa fa-eye"></i> {% get_hit_count for post%}</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end blog-box -->
                                 </div><!-- end blog-list -->
