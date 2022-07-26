@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load blog_tags %}
 {% load hitcount_tags %}
 
 {% block title %}tech-blog{% endblock %}
@@ -11,53 +12,53 @@
 </head>
 <body>
     <div id="wrapper">
-        {% for po in bigpic_list %}
-            <section class="section first-section">
-                <div class="container-fluid">
-                    <div class="masonry-blog clearfix">
-                            <div class="first-slot">
-                                <div class="masonry-box post-media">
-                                    <img src="{{ po.first_pic.url }}" width="788" height="347">
-                                    <div class="shadoweffect">
-                                        <div class="shadow-desc">
-                                            <div class="blog-meta">
-                                                <h4><a href="#" title="">{{ po.title }}</a></h4>
-                                                <small><a href="#" title="">Kategoriyalar</a></small>
-                                            </div><!-- end meta -->
-                                        </div><!-- end shadow-desc -->
-                                    </div><!-- end shadow -->
-                                </div><!-- end post-media -->
-                            </div><!-- end first-side -->
-                        <div class="second-slot">
+        <section class="section first-section">
+            <div class="container-fluid"
+                <div class="masonry-blog clearfix">
+                        <div class="first-slot">
                             <div class="masonry-box post-media">
-                                <img src="{{ po.sec_pic1.url }}" width="394" height="347">
+                                <img src="{% static 'upload/bird.jpg' %}" width="788" height="347">  
                                 <div class="shadoweffect">
                                     <div class="shadow-desc">
                                         <div class="blog-meta">
-                                            <h4><a href="#" title="">{{ po.tit_sp1 }}</a></h4>
-                                            <small><a href="#" title="">E-store</a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end shadow-desc -->
-                                </div><!-- end shadow -->
-                            </div><!-- end post-media -->
-                        </div><!-- end second-side -->
-
-                        <div class="last-slot">
-                            <div class="masonry-box post-media">
-                                <img src="{{ po.second_pic2.url }}" width="394" height="347">
-                                <div class="shadoweffect">
-                                    <div class="shadow-desc">
-                                        <div class="blog-meta">
-                                            <h4><a href="#" title="">{{ po.tit_sp2 }}</a></h4>
+                                            <h4><a href="http://127.0.0.1:8000/category/1/" title="">Texnalogiya va Gadjetlar</a></h4>
                                             <small><a href="#" title="">Kategoriyalar</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end shadow-desc -->
                                 </div><!-- end shadow -->
                             </div><!-- end post-media -->
-                        </div><!-- end second-side -->
-                    </div><!-- end masonry -->
-                </div>
-            </section>
+                         </div><!-- end first-side -->
+                        
+                    <div class="second-slot">
+                        <div class="masonry-box post-media">
+                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="347">
+                            <div class="shadoweffect">
+                                <div class="shadow-desc">
+                                    <div class="blog-meta">
+                                        <h4><a href="#" title="">Xarid vaqti</a></h4>
+                                        <small><a href="#" title="">E-store</a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end shadow-desc -->
+                            </div><!-- end shadow -->
+                        </div><!-- end post-media -->
+                    </div><!-- end second-side -->
+
+                    <div class="last-slot">
+                        <div class="masonry-box post-media">
+                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="347">
+                            <div class="shadoweffect">
+                                <div class="shadow-desc">
+                                    <div class="blog-meta">
+                                        <h4><a href="http://127.0.0.1:8000/category/3/" title="">Turfa Olam</a></h4>
+                                        <small><a href="#" title="">Kategoriyalar</a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end shadow-desc -->
+                            </div><!-- end shadow -->
+                        </div><!-- end post-media -->
+                    </div><!-- end second-side -->
+                </div><!-- end masonry -->
+            </div>
+        </section>
 
             <section class="section">
                 <div class="container">
@@ -68,7 +69,7 @@
                                     <h4 class="pull-left">Eng so'ngilari<a href="#"><i class="fa fa-rss"></i></a></h4>
                                 </div><!-- end blog-top -->
 
-                            {% for post in post_menu %}
+                            {% for post in object_list %}
 
                                 <div class="blog-list clearfix">
                                     <div class="blog-box row">
@@ -87,7 +88,7 @@
                                             <small class="firstsmall"><a class="bg-orange" href="{% url 'category' post.category.id %}">{{post.category}}</a></small>
                                             <small><a href="{% url 'article-detail' post.pk %}">{{ post.post_date }}</a></small>
                                             <!-- <small><a href="tech-author.html" title="">by {{post.post_author}}</a></small> -->
-                                        <small><a href="{% url 'article-detail' post.pk %}" title=""><i class="fa fa-eye"></i> {% get_hit_count for post%}</a></small>
+                                        <small><a href="{% url 'article-detail' pk=post.id %}" title=""><i class="fa fa-eye"></i>{% get_hit_count for post %}</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end blog-box -->
                                 </div><!-- end blog-list -->
@@ -104,16 +105,23 @@
                                 <div class="col-md-12">
                                     <nav aria-label="Page navigation">
                                         <ul class="pagination justify-content-start">
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">Next</a>
+					                    {% if page_obj.has_previous %}
+					                       <li class="page-item"><a class="page-link" href="?page=1">Dastlabki</a></li>
+                                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+					                     {% endif %}
+                                            <li class="page-item active">
+                                                <a class="page-link" href="#">{{ page_obj.number }}<span class="sr-only">(current)</span></a>
                                             </li>
+					                    {% if page_obj.has_next %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Oxirgi</a>
+                                            </li>
+					                    {% endif %}
                                         </ul>
                                     </nav>
                                 </div><!-- end col -->
-                            </div><!-- end row -->
+                            </div><!-- end row -->                                    
                         </div><!-- end col -->
 
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -121,40 +129,27 @@
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{{ po.big_ad.url }}" width="300" height="400">
+                                            <img src="{% static 'upload/bird.jpg' %}" width="300" height="400">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->
                                 
                                 <br/>
-
                                 <div class="widget">
-                                    <h2 class="widget-title">Popular Posts</h2>
+                                    <h2 class="widget-title">Eng ko'p ko'rilgan postlar</h2>
                                     <div class="blog-list-widget">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                <div class="w-100 justify-content-between">
-                                                    <img src="{% static 'upload/tech_blog_08.jpg' %}" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">5 Beautiful buildings you need..</h5>
-                                                    <small>12 Jan, 2016</small>
-                                                </div>
-                                            </a>
-
-                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                <div class="w-100 justify-content-between">
-                                                    <img src="{% static 'upload/tech_blog_01.jpg' %}" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">Let's make an introduction for..</h5>
-                                                    <small>11 Jan, 2016</small>
-                                                </div>
-                                            </a>
-
-                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                <div class="w-100 last-item justify-content-between">
-                                                    <img src="{% static 'upload/tech_blog_03.jpg' %}" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">Did you see the most beautiful..</h5>
-                                                    <small>07 Jan, 2016</small>
-                                                </div>
-                                            </a>
+                                            
+                                                {% for p in popular_posts %}
+                                                        <a href="{% url 'article-detail' p.pk %}"" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                            <div class="w-100 justify-content-between">
+                                                                <img src="{{ p.header_image.url }}" alt="" class="img-fluid float-left">
+                                                                <h5 class="mb-1">{{p.post_title}}</h5>
+                                                                <small>{{ p.post_date }}</small>
+                                                            </div>
+                                                        </a>
+                                                {% endfor %}
+                                           
                                         </div>
                                     </div><!-- end blog-list -->
                                 </div><!-- end widget -->
@@ -164,23 +159,9 @@
 
                                     <div class="row text-center">
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button facebook-button">
-                                                <i class="fa fa-facebook"></i>
-                                                <p>27k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                             <a href="#" class="social-button twitter-button">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fa fa-telegram"></i>
                                                 <p>98k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button google-button">
-                                                <i class="fa fa-google-plus"></i>
-                                                <p>17k</p>
                                             </a>
                                         </div>
 
@@ -196,17 +177,24 @@
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{{ po.bottom_ad.url }}" width="500" height="300">
+                                            <img src="{% static 'upload/bird.jpg' %}" width="500" height="300">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->
+
+                                <p>This is my blog. I've written {% total_posts %} posts so far.</p>
+
+
+
+
+
+
                             </div><!-- end sidebar -->
                         </div><!-- end col -->
                     </div><!-- end row -->
                 </div><!-- end container -->
             </section>  
-    
-        {% endfor %}    
+     
     </div><!-- end wrapper -->
 </body>
 </html>

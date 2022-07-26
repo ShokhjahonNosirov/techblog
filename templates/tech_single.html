@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load hitcount_tags %}
 
 {% block content %}
 
@@ -11,33 +11,29 @@
         <div id="wrapper">
             <section class="section single-wrapper">
                 <div class="container"> 
-                    <div class="row">
-                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">         
                             <div class="page-wrapper">
                                 <div class="blog-title-area text-center">
 
                                                 <ol class="breadcrumb hidden-xs-down">
-                                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                                                    <li class="breadcrumb-item"><a href={% url 'home' %}>Home</a></li>
                                                     <li class="breadcrumb-item active">{{post.post_title}}</li>
                                                 </ol>       
 
-                                                <span class="color-orange"><a href="tech-category-01.html" title="">{{ post.category }}</a></span>
+                                                <span class="color-orange"><a href="#">{{ post.category }}</a></span>
 
                                                 <h3>{{post.post_title}}</h3>
 
                                                 <div class="blog-meta big-meta">
-                                                    <small><a href="tech-single.html" title="">21 July, 2017</a></small>
-                                                    <small><a href="tech-author.html" title="">by Jessica</a></small>
-                                                    <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
+                                                    <small>{{ post.post_date }}</small>
+                                                    <small><a href="tech-author.html" title="">{{ post.post_author }}</a></small>
+                                                    <small><i class="fa fa-eye"></i>{% get_hit_count for post %}</small>
                                                 </div>  <!-- end meta -->
 
                                                 <div class="post-sharing">
                                                     <ul class="list-inline">
                                                         <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                        <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                                    </ul>
+                                                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-telegram"></i> <span class="down-mobile">Share on Telegram</span></a></li>                                                    </ul>
                                                 </div><!-- end post-sharing -->
                                             </div><!-- end title -->
 
@@ -70,8 +66,7 @@
                                     <div class="post-sharing">
                                         <ul class="list-inline">
                                             <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                            <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                            <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-telegram"></i> <span class="down-mobile">Share on Telegram</span></a></li>
                                         </ul>
                                     </div><!-- end post-sharing -->
                                 </div><!-- end title -->
@@ -88,58 +83,23 @@
 
                                 <hr class="invis1">
 
-                                <div class="custombox prevnextpost clearfix">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="blog-list-widget">
-                                                <div class="list-group">
-                                                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                        <div class="w-100 justify-content-between text-right">
-                                                            <img src="{% static 'upload/tech_menu_19.jpg' $}" alt="" class="img-fluid float-right">
-                                                            <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                                            <small>Prev Post</small>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div><!-- end col -->
-
-                                        <div class="col-lg-6">
-                                            <div class="blog-list-widget">
-                                                <div class="list-group">
-                                                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                        <div class="w-100 justify-content-between">
-                                                            <img src="{% static 'upload/tech_menu_20.jpg' %}" alt="" class="img-fluid float-left">
-                                                            <h5 class="mb-1">Let's make an introduction to the glorious world of history</h5>
-                                                            <small>Next Post</small>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div><!-- end col -->
-                                    </div><!-- end row -->
-                                </div><!-- end author-box -->
 
                                 <hr class="invis1">
 
                                 <div class="custombox authorbox clearfix">
-                                    <h4 class="small-title">About author</h4>
+                                    <h4 class="small-title">Muallif haqida</h4>
                                     <div class="row">
                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                             <img src="{% static 'upload/author.jpg' %}" alt="" class="img-fluid rounded-circle"> 
                                         </div><!-- end col -->
 
                                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                            <h4><a href="#">Jessica</a></h4>
+                                            <h4><a href="#">Shokhjahon Nosirov</a></h4>
                                             <p>Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet, consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget, finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Tech Blog!</p>
 
                                             <div class="topsocial">
-                                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
                                                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Website"><i class="fa fa-link"></i></a>
+                                                <a href="https://www.instagram.com/shokhjahon_nosirov/" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
                                             </div><!-- end social -->
 
                                         </div><!-- end col -->
@@ -151,41 +111,26 @@
                                 <div class="custombox clearfix">
                                     <h4 class="small-title">You may also like</h4>
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="blog-box">
-                                                <div class="post-media">
-                                                    <a href="tech-single.html" title="">
-                                                        <img src="{% static 'upload/tech_menu_04.jpg' %}" alt="" class="img-fluid">
-                                                        <div class="hovereffect">
-                                                            <span class=""></span>
-                                                        </div><!-- end hover -->
-                                                    </a>
-                                                </div><!-- end media -->
-                                                <div class="blog-meta">
-                                                    <h4><a href="tech-single.html" title="">We are guests of ABC Design Studio</a></h4>
-                                                    <small><a href="blog-category-01.html" title="">Trends</a></small>
-                                                    <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
-                                                </div><!-- end meta -->
-                                            </div><!-- end blog-box -->
-                                        </div><!-- end col -->
+                                        {% for post in similar_posts %}
+                                            <div class="col-lg-6">
+                                                <div class="blog-box">
+                                                    <div class="post-media">
+                                                        <a href="{% url 'article-detail' post.pk %}" title="">
+                                                            <img src="{{ post.header_image.url }}" width="300" height="400">
+                                                            <div class="hovereffect">
+                                                                <span class=""></span>
+                                                            </div><!-- end hover -->
+                                                        </a>
+                                                    </div><!-- end media -->
 
-                                        <div class="col-lg-6">
-                                            <div class="blog-box">
-                                                <div class="post-media">
-                                                    <a href="tech-single.html" title="">
-                                                        <img src="{% static 'upload/tech_menu_06.jpg' %}" alt="" class="img-fluid">
-                                                        <div class="hovereffect">
-                                                            <span class=""></span>
-                                                        </div><!-- end hover -->
-                                                    </a>
-                                                </div><!-- end media -->
-                                                <div class="blog-meta">
-                                                    <h4><a href="tech-single.html" title="">Nostalgia at work with family</a></h4>
-                                                    <small><a href="blog-category-01.html" title="">News</a></small>
-                                                    <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                                                </div><!-- end meta -->
-                                            </div><!-- end blog-box -->
-                                        </div><!-- end col -->
+                                                    <div class="blog-meta">
+                                                        <h4><a href="{% url 'article-detail' post.pk %}" title="">{{ post.post_title }}</a></h4>
+                                                        <small><a href="{% url 'category' post.category.id %}" title="">{{ post.category }}</a></small>
+                                                        <small>{{ post.post_date }}</small>
+                                                    </div><!-- end meta -->
+                                                </div><!-- end blog-box -->
+                                            </div><!-- end col -->
+                                        {% endfor %}
                                     </div><!-- end row -->
                                 </div><!-- end custom-box -->
 
@@ -255,44 +200,30 @@
                             </div><!-- end page-wrapper -->
                         </div><!-- end col -->
 
+
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <div class="sidebar">
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{% static 'upload/banner_07.jpg' %}" alt="" class="img-fluid">
+                                            <img src="{% static 'upload/bird.jpg' %}" width="300" height="400">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->
 
-                                
                                 <div class="widget">
-                                    <h2 class="widget-title">Popular Posts</h2>
+                                    <h2 class="widget-title">Eng ko'p ko'rilgan postlar</h2>
                                     <div class="blog-list-widget">
                                         <div class="list-group">
-                                            <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                <div class="w-100 justify-content-between">
-                                                    <img src="{% static 'upload/tech_blog_08.jpg' %}" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">5 Beautiful buildings you need..</h5>
-                                                    <small>12 Jan, 2016</small>
-                                                </div>
-                                            </a>
-
-                                            <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                <div class="w-100 justify-content-between">
-                                                    <img src="{% static 'upload/tech_blog_01.jpg' %}" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">Let's make an introduction for..</h5>
-                                                    <small>11 Jan, 2016</small>
-                                                </div>
-                                            </a>
-
-                                            <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                                <div class="w-100 last-item justify-content-between">
-                                                    <img src="{% static 'upload/tech_blog_03.jpg' %}" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">Did you see the most beautiful..</h5>
-                                                    <small>07 Jan, 2016</small>
-                                                </div>
-                                            </a>
+                                            {% for p in popular_posts %}
+                                                <a href="{% url 'article-detail' p.pk %}"" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                    <div class="w-100 justify-content-between">
+                                                        <img src="{{ p.header_image.url }}" alt="" class="img-fluid float-left">
+                                                        <h5 class="mb-1">{{p.post_title}}</h5>
+                                                        <small>{{ p.post_date }}</small>
+                                                    </div>
+                                                </a>
+                                            {% endfor %}
                                         </div>
                                     </div><!-- end blog-list -->
                                 </div><!-- end widget -->
@@ -303,23 +234,9 @@
 
                                     <div class="row text-center">
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button facebook-button">
-                                                <i class="fa fa-facebook"></i>
-                                                <p>27k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                             <a href="#" class="social-button twitter-button">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fa fa-telegram"></i>
                                                 <p>98k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button google-button">
-                                                <i class="fa fa-google-plus"></i>
-                                                <p>17k</p>
                                             </a>
                                         </div>
 
@@ -331,11 +248,13 @@
                                         </div>
                                     </div>
                                 </div><!-- end widget -->
+                                
+                                
 
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{% static 'upload/banner_03.jpg' %}" alt="" class="img-fluid">
+                                            <img src="{% static 'upload/bird.jpg' %}" width="500" height="300">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->

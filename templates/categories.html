@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load hitcount_tags %}
 {% block title %}tech-blog{% endblock %}
 
 {% block content %}
@@ -39,7 +39,7 @@
                                             <small class="firstsmall"><a class="bg-orange" href="{% url 'category' post.category.id %}">{{post.category}}</a></small>
                                             <small><a href="{% url 'article-detail' post.pk %}">{{ post.post_date }}</a></small>
                                             <!-- <small><a href="tech-author.html" title="">by {{post.post_author}}</a></small> -->
-                                            <small><a href="{% url 'article-detail' post.pk %}" title=""><i class="fa fa-eye"></i> 1114</a></small>
+                                            <small><a href="{% url 'article-detail' post.pk %}" title=""><i class="fa fa-eye"></i>{% get_hit_count for post %}</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end blog-box -->
                                 </div><!-- end blog-list -->
@@ -50,21 +50,6 @@
                         </div><!-- end page-wrapper -->
                             
                         <br/>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination justify-content-start">
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div><!-- end col -->
-                        </div><!-- end row -->
                     </div><!-- end col -->
 
 

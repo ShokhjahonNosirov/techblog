@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'hamyon',
     'hitcount',
+    'hamyon',
+    'taggit',                               
 ]
 
 MIDDLEWARE = [
