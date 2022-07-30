@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <br/><br/><br/><br/>
+	<h1>Create Profile Page...</h1>
+
+    <h3>{{user.last_name}} {{user.first_name}}</h3>
+
+	<div class="form-group">
+		<form method="POST" enctype = "multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button class="btn btn-primary">Create Profile Page</button>
+	</div>
+
+
+{% else %}
+	You are not allowed. Please login to add a post.
+{% endif %}
+
+
+
+{% endblock %} 
