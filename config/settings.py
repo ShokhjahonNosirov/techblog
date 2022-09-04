@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'hitcount',
     'hamyon',
     'taggit',       
-    'members',                          
+    'members', 
+    'django_social_share',                     
 ]
 
 MIDDLEWARE = [

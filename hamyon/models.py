@@ -2,6 +2,7 @@ from django.db import models
 #from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 #from datetime import datetime, date
+from django.utils import timezone
 from ckeditor.fields import RichTextField
 from django.urls import reverse
 from django.contrib.contenttypes.fields import GenericRelation
@@ -36,10 +37,12 @@ class Profile(models.Model):
 
 class Post(models.Model, HitCountMixin):
     post_title = models.CharField(max_length = 255, default = '')
+    slug = models.SlugField(max_length=250, unique_for_date='publish', unique=True)
     header_image = models.ImageField(null=False, blank=False, upload_to = 'images/', default= '')
     post_author = models.ForeignKey(User, on_delete = models.CASCADE, default = 'admin')
     body = RichTextField(blank=True, null=True)
-    post_date = models.DateField(auto_now_add=True)
+    post_date = models.DateField(auto_now_add=True) #created
+    publish = models.DateTimeField(default=timezone.now)
     #category = models.CharField(max_length=255)
     category = models.ForeignKey(Category, related_name = "categories", on_delete = models.CASCADE)
     snippet = models.CharField(max_length=255)      
@@ -49,7 +52,11 @@ class Post(models.Model, HitCountMixin):
         related_query_name='hit_count_generic_relation'
     )
 
-
+    def get_absolute_url(self):
+        return reverse("article-detail", 
+                        args=[self.publish.year,
+                        self.publish.month,
+                        self.publish.day, self.slug])
 
     def current_hit_count(self):
         return self.hit_count.hits
@@ -62,4 +69,19 @@ class Post(models.Model, HitCountMixin):
         return self.post_title + ' | ' + str(self.post_author)
 
     class Meta:
-        ordering = ('-post_date',)
+        ordering = ('-publish',)
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, 
+                            on_delete=models.CASCADE, 
+                            related_name = 'comments')
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default = True)
+
+    class Meta:
+        ordering = ['created']
+
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'

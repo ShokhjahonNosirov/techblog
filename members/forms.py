@@ -1,8 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from hamyon.models import Profile
-
+from hamyon.models import Profile, Comment
+    
 class ProfilePageForm(forms.ModelForm):
     class Meta:
         model = Profile 
@@ -38,7 +38,12 @@ class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password')
-        
+    
+class CommentForm(forms.ModelForm):
+    class Meta:  
+        model = Comment
+        fields = ('body', )
+
     
 class PasswordChangingForm(PasswordChangeForm):
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'type':'password'}))

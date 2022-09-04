@@ -26,7 +26,7 @@
                                     <div class="blog-box row">
                                         <div class="col-md-4">
                                             <div class="post-media">
-                                                <a href="{% url 'article-detail' post.pk %}">
+                                                <a href="{{ post.get_absolute_url }}">
                                                     <img src="{{ post.header_image.url }}" width="210" height="210">
                                                     <div class="hovereffect"></div>
                                                 </a>
@@ -34,12 +34,12 @@
                                         </div><!-- end col -->
 
                                         <div class="blog-meta big-meta col-md-8">
-                                            <h4><a href="{% url 'article-detail' post.pk %}" title="">{{post.post_title}}</a></h4>
+                                            <h4><a href="{{ post.get_absolute_url }}" title="">{{post.post_title}}</a></h4>
                                             <p>{{post.snippet}}</p>
                                             <small class="firstsmall"><a class="bg-orange" href="{% url 'category' post.category.id %}">{{post.category}}</a></small>
-                                            <small><a href="{% url 'article-detail' post.pk %}">{{ post.post_date }}</a></small>
+                                            <small><a href="{{ post.get_absolute_url }}">{{ post.post_date }}</a></small>
                                             <!-- <small><a href="tech-author.html" title="">by {{post.post_author}}</a></small> -->
-                                            <small><a href="{% url 'article-detail' post.pk %}" title=""><i class="fa fa-eye"></i>{% get_hit_count for post %}</a></small>
+                                            <small><a href="{{ post.get_absolute_url }}" title=""><i class="fa fa-eye"></i>{% get_hit_count for post %}</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end blog-box -->
                                 </div><!-- end blog-list -->
