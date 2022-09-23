@@ -37,10 +37,9 @@ class ShowProfilePageView(DetailView):
         return context
 
 class PasswordsChangeView(PasswordChangeView):
-    form_class = PasswordChangingForm
-    #form_class = PasswordChangeForm    
+    form_class = PasswordChangingForm 
+    template_name = 'registration/change-password.html'
     success_url = reverse_lazy('password_success')
-    #success_url = reverse_lazy('home')
 
 def password_success(request):
     return render(request, 'registration/password_success.html', {})

@@ -2,14 +2,17 @@
 
 {% block content %}
 
+<br/><br/><br/><br/>
 <h1>Edit Settings...</h1>
-<br/><br/>
 
 <div class="form-group">
 <form method="POST">
 	{% csrf_token %}	
 	{{ form.as_p }}
+	Parolni o'zgartirish uchun <a  href="{% url 'password_changing' user.profile.id  %}"> bu yerni bosing </a>
+	<br/><br/> 	
 	<button class="btn btn-primary">Update Profile</button></form>
-</div>
 
-{% endblock %} 
+</div>
+<br/>
+{% endblock %}

@@ -124,7 +124,4 @@ class ArticleDetailView(HitCountDetailView):
 
 
 
-
-
-
   

@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
@@ -34,10 +35,11 @@ class EditProfileForm(UserChangeForm):
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'})) 
     username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'})) 
+    password = None # it deletes unnecessary pasword words
     
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email')
     
 class CommentForm(forms.ModelForm):
     class Meta:  
