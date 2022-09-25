@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.views.generic import ListView, DetailView
 from .models import Post, Category, Comment
 from hitcount.views import HitCountDetailView
-from members.forms import CommentForm
+from accounts.forms import CommentForm
 from taggit.models import Tag
 
 
