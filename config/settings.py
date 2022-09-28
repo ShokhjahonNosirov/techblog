@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'ckeditor',
     'hitcount',
     'hamyon',
-    'taggit',       
-    'django_social_share',                     
+    'taggit',          
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,6 +74,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
