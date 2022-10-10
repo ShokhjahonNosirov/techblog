@@ -7,11 +7,9 @@ from hamyon.models import Profile, Comment
 class ProfilePageForm(forms.ModelForm):
     class Meta:
         model = Profile 
-        fields = ('bio', 'profile_pic', 'website_url', 'telegram_url')
+        fields = ('bio', 'profile_pic', 'telegram_url')
         widgets = {
-        'bio': forms.Textarea(attrs={'class': 'form-control'}),  
-        #'profile_pic': forms.TextInput(attrs={'class': 'form-control'}), 
-        'website_url': forms.TextInput(attrs={'class': 'form-control'}),  
+        'bio': forms.Textarea(attrs={'class': 'form-control'}),   
         'telegram_url': forms.TextInput(attrs={'class': 'form-control'}),  
         }
 class SignUpForm(UserCreationForm):

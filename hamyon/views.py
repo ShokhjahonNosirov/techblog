@@ -20,6 +20,7 @@ class HomeView(ListView):
 
 
 
+
 def CategoryView(request, cats): #cats hozir bu yerda tipa argument, code davomida cats nimaligi izohlab ketiladi.
     category_posts = Post.objects.filter(category=cats)
     ordering = ['-post_date']   
@@ -79,7 +80,8 @@ class ArticleDetailView(HitCountDetailView):
         return context   
 
 
-
+def AboutView(request): 
+    return render(request, 'about.html')
 
 
 

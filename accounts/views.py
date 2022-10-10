@@ -20,7 +20,7 @@ class CreateProfilePageView(CreateView):
 class EditProfilePageView(generic.UpdateView):
     model = Profile 
     template_name = 'registration/edit_profile_page.html'
-    fields = ['bio', 'profile_pic', 'website_url', 'telegram_url']
+    fields = ['bio', 'profile_pic', 'telegram_url']
     def get_success_url(self):
         profile_id=self.kwargs['pk']    
         return reverse_lazy('show_profile_page', kwargs={'pk': profile_id})

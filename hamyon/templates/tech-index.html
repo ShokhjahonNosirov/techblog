@@ -13,11 +13,11 @@
 <body>
     <div id="wrapper">
         <section class="section first-section">
-            <div class="container-fluid"
+
                 <div class="masonry-blog clearfix">
                         <div class="first-slot">
                             <div class="masonry-box post-media">
-                                <img src="{% static 'upload/bird.jpg' %}" width="788" height="347">  
+                                <img src="{% static 'upload/bird.jpg' %}" width="788" height="450">  
                                 <div class="shadoweffect">
                                     <div class="shadow-desc">
                                         <div class="blog-meta">
@@ -31,7 +31,7 @@
                         
                     <div class="second-slot">
                         <div class="masonry-box post-media">
-                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="347">
+                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="450">
                             <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
@@ -45,7 +45,7 @@
 
                     <div class="last-slot">
                         <div class="masonry-box post-media">
-                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="347">
+                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="450">
                             <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
@@ -57,7 +57,7 @@
                         </div><!-- end post-media -->
                     </div><!-- end second-side -->
                 </div><!-- end masonry -->
-            </div>
+
         </section>
 
             <section class="section">
@@ -154,25 +154,6 @@
                                     </div><!-- end blog-list -->
                                 </div><!-- end widget -->
 
-                                <div class="widget">
-                                    <h2 class="widget-title">Follow Us</h2>
-
-                                    <div class="row text-center">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button twitter-button">
-                                                <i class="fa fa-telegram"></i>
-                                                <p>98k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button youtube-button">
-                                                <i class="fa fa-youtube"></i>
-                                                <p>22k</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div><!-- end widget -->
 
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
@@ -182,7 +163,7 @@
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->
 
-                                <p>This is my blog. I've written {% total_posts %} posts so far.</p>
+                                {% comment %} <p>This is my blog. I've written {% total_posts %} posts so far.</p> {% endcomment %}
 
 
 

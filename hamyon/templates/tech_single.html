@@ -44,7 +44,7 @@
                                             </div><!-- end content -->
                                             <br/> 
                                             
-                                <hr class="invis1">
+                                            <hr class="invis1">
 
                                 <div class="custombox authorbox clearfix">
                                     <h4 class="small-title">Muallif haqida</h4>
@@ -75,7 +75,7 @@
                                             <div class="col-lg-6">
                                                 <div class="blog-box">
                                                     <div class="post-media">
-                                                        <a href="{% url 'article-detail' post.pk %}" title="">
+                                                        <a href="{{ post.get_absolute_url }}" title="">
                                                             <img src="{{ post.header_image.url }}" width="300" height="400">
                                                             <div class="hovereffect">
                                                                 <span class=""></span>
@@ -84,7 +84,7 @@
                                                     </div><!-- end media -->
 
                                                     <div class="blog-meta">
-                                                        <h4><a href="{% url 'article-detail' post.pk %}" title="">{{ post.post_title }}</a></h4>
+                                                        <h4><a href="{{ post.get_absolute_url }}" title="">{{ post.post_title }}</a></h4>
                                                         <small><a href="{% url 'category' post.category.id %}" title="">{{ post.category }}</a></small>
                                                         <small>{{ post.post_date }}</small>
                                                     </div><!-- end meta -->
@@ -172,31 +172,8 @@
                                             {% endfor %}
                                         </div>
                                     </div><!-- end blog-list -->
-                                </div><!-- end widget -->
-
+                                </div><!-- end widget -->                                
                                 
-                                <div class="widget">
-                                    <h2 class="widget-title">Follow Us</h2>
-
-                                    <div class="row text-center">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button twitter-button">
-                                                <i class="fa fa-telegram"></i>
-                                                {% comment %} <p>98k</p> {% endcomment %}
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a href="#" class="social-button youtube-button">
-                                                <i class="fa fa-youtube"></i>
-                                                {% comment %} <p>22k</p> {% endcomment %}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div><!-- end widget -->
-                                
-                                
-
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">

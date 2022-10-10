@@ -2,56 +2,62 @@
 {% load static %}
 {% block content %}
 
+<head>
+  <link href="{% static 'css/ok.css' %}" rel="stylesheet">
+</head>
 
+<body>
+<div class = "all">
 
-<br/><br/>
-<br/><br/><br/>
-<h1>Foydalanuvchi kabineti</h1>
-<br/>
+    <h1 class = "a1">Foydalanuvchi kabineti</h1>
+    <br/>
 
-<h5>Username: {{user.username}}</h5>
-<br/><br/>
+    <h3 >Username: {{user.username}}</h3>
+    <br/><br/>
+      
 
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-2">
+          {% if page_user.profile_pic %}	
+            <img src="{{ page_user.profile_pic.url }}" width="180" height="200" class = "card-img" >
+          {% else %}
+            <img src="{% static 'images/df.png' %}" width="180" height="200" class = "card-img" >
+          {% endif %}	  
+        </div> 
+          <div class="col-md-10">
+            <div class="card-body col-sm-10">
+              <h2 class="card-title">
+                {{ page_user.user.last_name }} {{ page_user.user.first_name }}       
+              </h2>
 
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-2">
-      {% if page_user.profile_pic %}	
-		    <img src="{{ page_user.profile_pic.url }}" width="180" height="200" class = "card-img" >
-      {% else %}
-	      <img src="{% static 'images/df.png' %}" width="180" height="200" class = "card-img" >
-      {% endif %}	  
-    </div>  
-    <div class="col-md-10">
-      <div class="card-body">
-        <h2 class="card-title">
-		      {{ page_user.user.last_name }} {{ page_user.user.first_name }}       
-		    </h2>
-
-        <p class = "small text-muted">
-		      {% if page_user.telegram_url %}
-			      <a href="{{ page_user.telegram_url}}"> Telegram </a> |
-		      {% endif %}
-	      </p>
-        <p class="card-text"> 
-		      {{ page_user.bio }}
-		    </p>
-
-
+              <p class = "small text-muted">
+                {% if page_user.telegram_url %}
+                  <a href="{{ page_user.telegram_url}}"> Telegram </a>
+                {% endif %}
+              </p>
+              <p class="card-text"> 
+                {{ page_user.bio }}
+              </p>
+            </div>
+          </div>
       </div>
-    </div>
-  </div>
-</div>  
-<br/> 
+    </div>  
+    <br/> 
 
-  <pre><a href="{% url 'logout' %}"> Logout</a></pre> 
+      <p>
+        <a href="{% url 'logout' %}"> Logout </a>
+      </p> 
 
-  {% if user.profile.id %}
-    <a href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page   <i style="font-size:24px" class="fa">&#xf040;</i> </a>
-  {% endif %}
-  <br/>
-  <p>
-    <a href="{% url 'edit_profile' user.profile.id %}"> Edit Profile     <i style="font-size:24px" class="fa">&#xf040;</i> </a> 
-  </p>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
+      {% if user.profile.id %}
+        <a href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page   <i style="font-size:24px" class="fa">&#xf040;</i> </a>
+      {% endif %}
+      <br/>
+      <p>
+        <a href="{% url 'edit_profile' user.profile.id %}"> Edit Profile     <i style="font-size:24px" class="fa">&#xf040;</i> </a> 
+      </p>
+
+</div>
 {% endblock %}	
+
+</body>
