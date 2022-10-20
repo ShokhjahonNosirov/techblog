@@ -4,6 +4,7 @@ from .models import Post, Category, Comment
 from hitcount.views import HitCountDetailView
 from accounts.forms import CommentForm
 from taggit.models import Tag
+from django.core.mail import send_mail
 
 
 class HomeView(ListView):
@@ -81,7 +82,24 @@ class ArticleDetailView(HitCountDetailView):
 
 
 def AboutView(request): 
-    return render(request, 'about.html')
+    if request.method == "POST":
+        message_name = request.POST['message-name']
+        message_email = request.POST['message-email']
+        message_number = request.POST['message-number']
+        message = request.POST['message']
+        
+        # send an email
+        send_mail(
+            message_name, #subject
+            message, #message
+            message_email, #from email
+            ['iamshokhjahon@gmail.com'], #to email , kop yozish un vergul qoyb yozb keturasan
+            fail_silently=False,
+        )
+
+        return render(request, 'about.html', {"message_name": message_name})
+    else:
+        return render(request, 'about.html', {})
 
 
 

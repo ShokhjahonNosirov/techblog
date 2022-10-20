@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -134,11 +135,15 @@ HITCOUNT_KEEP_HIT_IN_DATABASE = { 'days': 2 }
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-SENDGRID_API_KEY = os.getenv('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')
+#Email services
+
+SENDGRID_API_KEY = os.getenv('')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'iamshokhjahon@gmail.com'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey' 
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_USE_TLS = True #for safety purposes
+EMAIL_USE_SSL = False #for safety purposes
