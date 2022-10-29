@@ -5,7 +5,7 @@ from hitcount.views import HitCountDetailView
 from accounts.forms import CommentForm
 from taggit.models import Tag
 from django.core.mail import send_mail
-
+import requests
 
 class HomeView(ListView):
     model = Post
@@ -72,6 +72,7 @@ class ArticleDetailView(HitCountDetailView):
         context["post_menu"] = post_menu
         post = Post.objects.get(slug=kwargs['object'].slug)
         comments = post.comments.all()
+        
 
         context.update({
             'similar_posts':similar_posts,

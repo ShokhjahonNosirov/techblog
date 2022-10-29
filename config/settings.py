@@ -137,13 +137,14 @@ LOGOUT_REDIRECT_URL = 'home'
 
 #Email services
 
-SENDGRID_API_KEY = os.getenv('')
+# SENDGRID_API_KEY = os.getenv('')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'iamshokhjahon@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey' 
+# DEFAULT_FROM_EMAIL = 'iamshokhjahon@gmail.com'
+# EMAIL_HOST = 'smtp.sendgrid.net' #sg
+EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'apikey'  # sendgrid    
+EMAIL_HOST_USER = 'iamshokhjahon@gmail.com' 
 EMAIL_HOST_PASSWORD = ''
+# EMAIL_HOST_PASSWORD = '' #sg
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_USE_TLS = True #for safety purposes
-EMAIL_USE_SSL = False #for safety purposes

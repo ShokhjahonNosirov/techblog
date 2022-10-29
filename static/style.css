@@ -1057,6 +1057,19 @@ div.tab button:hover {
     font-weight: bold;
 }
 
+
+/* o'zim qowganim */
+.blog-content{
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+.pp img{
+    width: 100%;
+}
+/* o'zim qowganim */
+
 .img-fullwidth {
     width: 100%;
     margin-bottom: 2rem;

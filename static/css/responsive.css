@@ -95,8 +95,7 @@
     .blog-title-area {
         text-align: center;
     }
-    .pp .float-right,
-    .pp .float-left {
+    .pp img {
         width: 100%;
         margin: 1rem 0;
     }

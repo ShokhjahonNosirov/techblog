@@ -12,9 +12,9 @@
             <section class="section single-wrapper">
                 <div class="container"> 
                     <div class="row">         
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                             <div class="page-wrapper">
                                 <div class="blog-title-area text-center">
-
                                                 <ol class="breadcrumb hidden-xs-down">
                                                     <li class="breadcrumb-item"><a href={% url 'home' %}>Home</a></li>
                                                     <li class="breadcrumb-item active">{{post.post_title}}</li>
@@ -105,7 +105,7 @@
                                         <div class="col-lg-12">
                                             <div class="comments-list">
                                                 {% for comment in comments %}
-                                                        <div class="media">
+                                                    <div class="media">
                                                         <a class="media-left" href="#">
                                                             <img src="{% static 'upload/author_01.jpg' %}" alt="" class="rounded-circle">
                                                         </a> 
@@ -130,7 +130,7 @@
                                     <h4 class="small-title">Kommentariya qo'shing</h4>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form method="post">
+                                            <form class="form-wrapper" method="post">
                                                    <input type="text" name="body">
                                                 </br></br>                                                     
                                                     {% csrf_token %}
@@ -146,8 +146,9 @@
                             </div><!-- end page-wrapper -->
                         </div><!-- end col -->
 
-                        </br></br></br>
+                        
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            
                             <div class="sidebar">
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
