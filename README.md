@@ -1,3 +1,4 @@
 # techblog
+
 The webapp is about new technological news and state of the art gadgets. 
-![my-tech](https://user-images.githubusercontent.com/65361345/199304481-9751e612-6a8d-448e-80f0-c8cb3b3a927c.png)
+![Screenshot_8](https://user-images.githubusercontent.com/65361345/199304612-796a099e-de48-4d83-9bb9-ae64a0c3f1e1.png)
