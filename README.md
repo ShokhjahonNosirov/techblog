@@ -1,4 +1,4 @@
-# techblog
+# mytec.uz
 
 The webapp is about new technological news and state of the art gadgets. 
 
