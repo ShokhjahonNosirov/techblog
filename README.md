@@ -3,4 +3,4 @@
 The webapp is about new technological news and state of the art gadgets. 
 
 
-![Screenshot_8](https://user-images.githubusercontent.com/65361345/199304612-796a099e-de48-4d83-9bb9-ae64a0c3f1e1.png)
+![mytecc](https://user-images.githubusercontent.com/65361345/204156243-d66cbffd-4be2-4e80-90f1-823ad4328e7a.png)
