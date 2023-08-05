@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Site Metas -->
-    <title>Tech Blog - Stylish Magazine Blog Template</title>
+    <title>MyTech - Nosirov's Blog</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
     
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     
     <!-- Design fonts -->
@@ -30,7 +30,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'style.css' %}" rel="stylesheet">
 
-    <link href="{% static 'pop.css' %}" rel="stylesheet">
+    {% comment %} <link href="{% static 'pop.css' %}" rel="stylesheet"> {% endcomment %}
     
     <!-- Responsive styles for this template -->
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
@@ -56,7 +56,7 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/version/tech-logo.png' %}" alt=""></a>
+                    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/version/my-tech.png' %}" alt="" width="150" height="50"></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -66,21 +66,22 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategoriyalar</a>
                                     <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
                                         <li>
-                                            <div class="container">
+                                            <div>
                                                 <div class="mega-menu-content clearfix">
-                                                    <div class="tab">
-                                                        {% for category in category_list %}
-                                                            <a href="{% url 'category' category.id %}"><button class="tablinks active" onclick="openCategory(event)">{{ category.name }}</button></a>
-                                                        {% endfor %}
-                                                    </div>
-
+                                                    
+                                                        <div class="tab">
+                                                            {% for category in category_list %}
+                                                                <a href="{% url 'category' category.id %}"><button class="tablinks active" onclick="openCategory(event)">{{ category.name }}</button></a>
+                                                            {% endfor %}
+                                                        </div>
+                                                   
                                                 </div><!-- end mega-menu-content -->
                                             </div>
                                         </li>
                                     </ul>
                             </li>   
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'about' %}">Biz haqimizda</a>
+                                <a class="nav-link" href="{% url 'about' %}">Biz bilan bog'lanish</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav mr-2">
@@ -112,11 +113,12 @@
                     <div class="col-lg-7">
                         <div class="widget">
                             <div class="footer-text text-left">
-                                <a href="index.html"><img src="{% static 'images/version/tech-footer-logo.png' %}" alt="" class=""></a>
-                                <p>Tech Blog is a technology blog, we share marketing, news and gadget articles.</p>
+                                <a href="{% url 'home' %}"><img src="{% static 'images/version/my-tech.png' %}" alt="" class="" width="250" height="100"></a>
+                                <p>MyTech - texno blog. Biz sizga dasturlash, texnalogiya va boshqa mavzularda foydali maqolalar ulashamiz.</p>
                                 <div class="social">
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Telegram"><i class="fa fa-telegram"></i></a>              
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="You Tube"><i class="fa fa-youtube"></i></a>
+                                    <a href="https://t.me/Shokhjahon_Nosirov" data-toggle="tooltip" data-placement="bottom" title="Telegram"><i class="fa fa-telegram"></i></a> 
+                                    <a href="https://www.instagram.com/shokhjahon_nosirov/" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>              
+                                    {% comment %} <a href="#" data-toggle="tooltip" data-placement="bottom" title="You Tube"><i class="fa fa-youtube"></i></a> {% endcomment %}
                                 </div>
 
                                 <hr class="invis">
@@ -125,7 +127,7 @@
                         </div><!-- end widget -->
                     </div><!-- end col -->
 
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    {% comment %} <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="widget">
                             <h2 class="widget-title">Kategoriyalar</h2>
                             <div class="link-widget">       
@@ -136,28 +138,26 @@
                                 </ul>
                             </div><!-- end link-widget -->
                         </div><!-- end widget -->
-                    </div><!-- end col -->
+                    </div><!-- end col -->  
 
                     <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                         <div class="widget">
-                            <h2 class="widget-title">Copyrights</h2>
+                            <h2 class="widget-title">Kategoriyalar</h2>
                             <div class="link-widget">
                                 <ul>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Advertising</a></li>
-                                    <li><a href="#">Write for us</a></li>
-                                    <li><a href="#">Trademark</a></li>
-                                    <li><a href="#">License & Help</a></li>
+                                    {% for category in category_list %}
+                                        <li><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </div><!-- end link-widget -->
                         </div><!-- end widget -->
-                    </div><!-- end col -->
+                    </div><!-- end col --> {% endcomment %}
                 </div>
 
-                <div class="row">
+                <div class="row">   
                     <div class="col-md-12 text-center">
                         <br>
-                        <div class="copyright">&copy; Tech Blog. Shokhjahon Nosirov Bakhriddinovich </div>
+                        <div class="copyright">&copy; MyTech. Shokhjahon Nosirov Bakhriddinovich </div>
                     </div>
                 </div>
             </div><!-- end container -->

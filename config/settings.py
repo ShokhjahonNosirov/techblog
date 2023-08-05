@@ -84,12 +84,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': 'postgres',
+        'PASSWORD': '.Aa9982240858',
+        'HOST': 'localhost', 
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -105,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 USE_L10N = True
@@ -114,6 +126,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+# AUTH_PROFILE_MODULE = 'hamyon.Profile'
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
@@ -132,19 +146,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 2 }
 HITCOUNT_KEEP_HIT_IN_DATABASE = { 'days': 2 }
 
+
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 #Email services
 
-# SENDGRID_API_KEY = os.getenv('')
+# SENDGRID_API_KEY = os.getenv('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')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # DEFAULT_FROM_EMAIL = 'iamshokhjahon@gmail.com'
 # EMAIL_HOST = 'smtp.sendgrid.net' #sg
 EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST_USER = 'apikey'  # sendgrid    
 EMAIL_HOST_USER = 'iamshokhjahon@gmail.com' 
-EMAIL_HOST_PASSWORD = ''
-# EMAIL_HOST_PASSWORD = '' #sg
+EMAIL_HOST_PASSWORD = 'qajaqfhyeunalkqy'
+# EMAIL_HOST_PASSWORD = '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' #sg
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

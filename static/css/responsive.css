@@ -161,7 +161,7 @@
     }
     .header .navbar-nav .has-submenu > ul {
         position: absolute;
-        top: 130%;
+        top: 100%;
         visibility: hidden;
         display: block;
         opacity: 0;
@@ -191,7 +191,7 @@
         left: 130%;
     }
     .header .navbar-nav .has-submenu > ul li ul.show-right {
-        right: 130%;
+        right: 100%;
         left: auto;
     }
 }

@@ -10,7 +10,7 @@ class ProfilePageForm(forms.ModelForm):
         fields = ('bio', 'profile_pic', 'telegram_url')
         widgets = {
         'bio': forms.Textarea(attrs={'class': 'form-control'}),   
-        'telegram_url': forms.TextInput(attrs={'class': 'form-control'}),  
+        'telegram_url': forms.TextInput(attrs={'placeholder':'Ixtiyoriy'}),  
         }
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))

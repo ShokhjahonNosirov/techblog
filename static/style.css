@@ -187,14 +187,11 @@ a {
     padding: 0;
     box-shadow: none;
     border-radius: 0;
-    min-width: 240px;
+    min-width: 10px;
     margin-top: 15px !important;
-    border-color: #edeff2;
+
 }
 
-.header .dropdown ul li {
-    border-bottom: 1px solid #f5f5f5;
-}
 
 .header .dropdown-item {
     font-weight: 400;
@@ -215,7 +212,7 @@ a {
 
 .header .dropdown-item span {
     position: absolute;
-    right: 20px;
+    right: 5px;
     top: 2px;
 }
 
@@ -280,32 +277,24 @@ a {
 }
 
 .mega-menu-content {
-    position: relative;
+    position: absolute;
     padding: 0;
+    left: 18%;
     background-color: #ffffff;
-}
+    width: 250px;
+    z-index: 1;
+    
 
-.tab-details {
-    padding: 2rem 0;
 }
 
 .tab-details .blog-meta h4 {
-    font-size: 14px;
+    font-size: 1px;
     margin: 0;
     padding: 0.5rem 0 0;
     line-height: 1.4;
 }
 
-.menucat {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #111111;
-    font-size: 11px;
-    padding: 0.3rem 0.6rem;
-    line-height: 1;
-    color: #ffffff;
-}
+
 
 .post-media:hover .menucat {
     display: none;
@@ -319,11 +308,10 @@ a {
 /* Style the tab */
 
 div.tab {
-    float: left;
-    padding: 2rem 0;
-    border-right: 1px solid #e1e3e6;
-    width: 20%;
-    background-color: #edeff2;
+    float: none;
+    padding: 0rem 0;
+    width: 100%;
+
 }
 
 
@@ -333,11 +321,11 @@ div.tab button {
     display: block;
     background-color: inherit;
     color: black;
-    padding: 0.5rem 1rem;
+    padding: 1rem 3rem;
     width: 100%;
     border: 0;
     outline: none;
-    text-align: right;
+    text-align: none;
     cursor: pointer;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -371,7 +359,6 @@ div.tab button:hover {
 /* Style the tab content */
 
 .tabcontent {
-    float: left;
     padding: 0 1rem;
     display: none;
     width: 80%;
@@ -382,9 +369,7 @@ div.tab button:hover {
     display: block;
 }
 
-.header .navbar-nav .has-submenu.menu-large ul li {
-    background: url(images/menubg.jpg) repeat-y center center #ffffff !important;
-}
+
 
 .tab-details {
     padding: 0;
@@ -393,7 +378,6 @@ div.tab button:hover {
 .tabcontent {
     border-left: medium none;
     display: none;
-    float: left;
     padding: 2rem 1.5rem 0;
     width: 80%;
 }
@@ -1094,7 +1078,7 @@ div.tab button:hover {
 }
 
 .banner-spot {
-    background: #edeff2 url("images/ads-bg.png") no-repeat scroll center right / auto 100%;
+    background: #edeff2 url("#") no-repeat scroll center right / auto 100%;
     clear: both;
     display: block;
     height: auto;
@@ -1444,6 +1428,7 @@ hr.invis3 {
     padding: 0;
     line-height: 1;
 }
+
 
 .footer-text img {
     max-width: 290px;

@@ -13,16 +13,15 @@
 <body>
     <div id="wrapper">
         <section class="section first-section">
-
                 <div class="masonry-blog clearfix">
                         <div class="first-slot">
                             <div class="masonry-box post-media">
-                                <img src="{% static 'upload/bird.jpg' %}" width="788" height="450">  
+                                <img src="{% static 'upload/tech.jpg' %}" alt = "asd" width="788" height="450">
                                 <div class="shadoweffect">
                                     <div class="shadow-desc">
                                         <div class="blog-meta">
                                             <h4><a href="http://127.0.0.1:8000/category/1/" title="">Texnalogiya va Gadjetlar</a></h4>
-                                            <small><a href="#" title="">Kategoriyalar</a></small>
+                                            <small><a href="http://127.0.0.1:8000/category/1/" title="">Kategoriyalar</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end shadow-desc -->
                                 </div><!-- end shadow -->
@@ -31,12 +30,12 @@
                         
                     <div class="second-slot">
                         <div class="masonry-box post-media">
-                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="450">
+                            <img src="{% static 'upload/olam.jpg' %}" width="394" height="450">
                             <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <h4><a href="#" title="">Xarid vaqti</a></h4>
-                                        <small><a href="#" title="">E-store</a></small>
+                                        <h4><a href="http://127.0.0.1:8000/category/2/" title="">Turfa olam</a></h4>
+                                        <small><a href="http://127.0.0.1:8000/category/2/" title="">Kategoriyalar</a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
                             </div><!-- end shadow -->
@@ -45,12 +44,12 @@
 
                     <div class="last-slot">
                         <div class="masonry-box post-media">
-                            <img src="{% static 'upload/bird.jpg' %}" width="394" height="450">
+                            <img src="{% static 'upload/coding.jpg' %}" width="394" height="450">
                             <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <h4><a href="http://127.0.0.1:8000/category/3/" title="">Turfa Olam</a></h4>
-                                        <small><a href="#" title="">Kategoriyalar</a></small>
+                                        <h4><a href="http://127.0.0.1:8000/category/3/" title="">Coding</a></h4>
+                                        <small><a href="http://127.0.0.1:8000/category/3/" title="">Kategoriyalar</a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
                             </div><!-- end shadow -->
@@ -126,15 +125,26 @@
 
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <div class="sidebar">
-                                <div class="widget">
+                                {% comment %} <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{% static 'upload/bird.jpg' %}" width="300" height="400">
+                                            <img src="{% static 'upload/ad.jpg' %}" width="300" height="400">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
-                                </div><!-- end widget -->
+                                </div><!-- end widget --> {% endcomment %}
                                 
+                                
+                                <div class="widget">
+                                    <h5 id="alert">Markaziy Bank ma'lumotlariga ko'ra {% now "SHORT_DATE_FORMAT" %} sanadagi valyuta kurslari</h5>
+                                    <br>
+                                        {% for k,v in pd.items %}  
+                                            <p> 1 {{k}} : {{v}} so'm </p>
+                                            <hr>
+                                        {% endfor %} 
+                                </div><!-- end widget -->  
+
                                 <br/>
+                                
                                 <div class="widget">
                                     <h2 class="widget-title">Eng ko'p ko'rilgan postlar</h2>
                                     <div class="blog-list-widget">
@@ -156,13 +166,13 @@
 
 
 
-                                <div class="widget">
+                                {% comment %} <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{% static 'upload/bird.jpg' %}" width="500" height="300">
+                                            <img src="{% static 'upload/ad.jpg' %}" width="500" height="300">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
-                                </div><!-- end widget -->
+                                </div><!-- end widget --> {% endcomment %}
 
                                 {% comment %} <p>This is my blog. I've written {% total_posts %} posts so far.</p> {% endcomment %}
 

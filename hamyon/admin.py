@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Category, Profile, Comment
+from .models import Post, Category, Profile, Comment, Contact, IpModel
 # Register your models here.
 
 #class CustomUserAdmin(UserAdmin):
@@ -8,6 +8,9 @@ from .models import Post, Category, Profile, Comment
 admin.site.register(Post)
 admin.site.register(Category)
 admin.site.register(Profile)
+admin.site.register(Contact)
+admin.site.register(IpModel)
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

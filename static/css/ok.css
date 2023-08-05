@@ -10,3 +10,40 @@
 .a {
     color: red; 
 }
+h5#alert {
+    font-family: Snell Roundhand, cursive !important;
+    color: #002341;
+    display: block;
+    font-size: 18px;
+    margin: 0 0 2rem;
+    padding: 0;
+    line-height: 1.5;
+}
+.salovot{
+    font-family: Snell Roundhand, cursive !important;
+    font-size: 18px;
+}
+#edit {
+    padding-left: 30px !important;
+}
+
+#pass {
+    padding-left: 30px !important;
+    padding-top: 90px !important;
+    padding-bottom: 30px !important;
+}
+
+#log {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#pass2 {
+    padding-left: 40px !important;
+    padding-top: 130px !important;
+    padding-bottom: 160px !important;
+}
+
+#categ {
+    padding-bottom: 160px !important;
+}

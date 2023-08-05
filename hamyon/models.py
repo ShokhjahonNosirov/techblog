@@ -10,8 +10,15 @@ from hitcount.models import HitCountMixin, HitCount
 from taggit.managers import TaggableManager
 
 
+class IpModel(models.Model):
+    ip = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.ip
+    
+
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255) 
 
     def __str__(self):
         return self.name
@@ -20,7 +27,7 @@ class Category(models.Model):
         return reverse('home') 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null = True, on_delete=models.CASCADE) #, related_name = "user" 
     bio = models.TextField()
     profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
     telegram_url = models.CharField(max_length=255, null=True, blank=True)
@@ -42,14 +49,15 @@ class Post(models.Model, HitCountMixin):
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True) #created
     publish = models.DateTimeField(default=timezone.now)
-    #category = models.CharField(max_length=255)
     category = models.ForeignKey(Category, related_name = "categories", on_delete = models.CASCADE)
-    snippet = models.CharField(max_length=255)      
+    snippet = models.CharField(max_length=700)      
     tags = TaggableManager()
+    likes = models.ManyToManyField(IpModel, related_name="post_likes", blank=True) #new 
     hit_count_generic = GenericRelation(
         HitCount, object_id_field='object_pk',
         related_query_name='hit_count_generic_relation'
     )
+
 
     def get_absolute_url(self):
         return reverse("article-detail", 
@@ -66,6 +74,9 @@ class Post(models.Model, HitCountMixin):
     
     def __str__(self):
         return self.post_title + ' | ' + str(self.post_author)
+    
+    def total_likes(self):
+        return self.likes.count()
 
     class Meta:
         ordering = ('-publish',)
@@ -84,3 +95,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=158)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name

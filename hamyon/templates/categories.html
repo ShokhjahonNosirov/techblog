@@ -1,60 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load hitcount_tags %}
-{% block title %}tech-blog{% endblock %}
 
 {% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
-</head>
+    <head>
+        <link href="{% static 'css/ok.css' %}" rel="stylesheet">
+    </head>
 <body>
-    <div id="wrapper">
-        <br/><br/><br/><br/>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <div class="page-wrapper">
-                <div class="blog-top clearfix">
-                {% for post in category_posts %}
-                    {% if forloop.first %}
-                        <h4 class="pull-left">{{ post.category }}<a href="#"><i class="fa fa-rss"></i></a></h4>
-                    {% endif %}
-                {% endfor %}
-                </div><!-- end blog-top -->
+    <div id = "categ">
+        <div id="wrapper">
+            <br/><br/><br/><br/>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-top clearfix">
+                    {% for post in category_posts %}
+                        {% if forloop.first %}
+                            <h4 class="pull-left">{{ post.category }}<a href="#"><i class="fa fa-rss"></i></a></h4>
+                        {% endif %}
+                    {% endfor %}
+                    </div><!-- end blog-top -->
 
-                            {% for post in category_posts %}
-                                <div class="blog-list clearfix">
-                                    <div class="blog-box row">
-                                        <div class="col-md-4">
-                                            <div class="post-media">
-                                                <a href="{{ post.get_absolute_url }}">
-                                                    <img src="{{ post.header_image.url }}" width="210" height="210">
-                                                    <div class="hovereffect"></div>
-                                                </a>
-                                            </div><!-- end media -->
-                                        </div><!-- end col -->
+                                {% for post in category_posts %}
+                                    <div class="blog-list clearfix">
+                                        <div class="blog-box row">
+                                            <div class="col-md-4">
+                                                <div class="post-media">
+                                                    <a href="{{ post.get_absolute_url }}">
+                                                        <img src="{{ post.header_image.url }}" width="210" height="210">
+                                                        <div class="hovereffect"></div>
+                                                    </a>
+                                                </div><!-- end media -->
+                                            </div><!-- end col -->
 
-                                        <div class="blog-meta big-meta col-md-8">
-                                            <h4><a href="{{ post.get_absolute_url }}" title="">{{post.post_title}}</a></h4>
-                                            <p>{{post.snippet}}</p>
-                                            <small class="firstsmall"><a class="bg-orange" href="{% url 'category' post.category.id %}">{{post.category}}</a></small>
-                                            <small><a href="{{ post.get_absolute_url }}">{{ post.post_date }}</a></small>
-                                            <!-- <small><a href="tech-author.html" title="">by {{post.post_author}}</a></small> -->
-                                            <small><a href="{{ post.get_absolute_url }}" title=""><i class="fa fa-eye"></i>{% get_hit_count for post %}</a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end blog-box -->
-                                </div><!-- end blog-list -->
-                                    
-                                    <hr class="invis">
+                                            <div class="blog-meta big-meta col-md-8">
+                                                <h4><a href="{{ post.get_absolute_url }}" title="">{{post.post_title}}</a></h4>
+                                                <p>{{post.snippet}}</p>
+                                                <small class="firstsmall"><a class="bg-orange" href="{% url 'category' post.category.id %}">{{post.category}}</a></small>
+                                                <small><a href="{{ post.get_absolute_url }}">{{ post.post_date }}</a></small>
+                                                <!-- <small><a href="tech-author.html" title="">by {{post.post_author}}</a></small> -->
+                                                <small><a href="{{ post.get_absolute_url }}" title=""><i class="fa fa-eye"></i>{% get_hit_count for post %}</a></small>
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
+                                    </div><!-- end blog-list -->
+                                        
+                                        <hr class="invis">
 
-                            {% endfor %}
-                        </div><!-- end page-wrapper -->
-                            
-                        <br/>
-                    </div><!-- end col -->
-
-
-    
-    </div><!-- end wrapper -->
+                                {% endfor %}
+                            </div><!-- end page-wrapper -->
+                                
+                            <br/>
+                        </div><!-- end col -->
+        </div><!-- end wrapper -->
+    </div>
 </body>
 </html>
 

@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<br/><br/><br/><br/>
-<h1>Edit Settings...</h1>
 
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}	
-	{{ form.as_p }}
-	Parolni o'zgartirish uchun <a  href="{% url 'password_changing' user.profile.id  %}"> bu yerni bosing </a>
-	<br/><br/> 	
-	<button class="btn btn-primary">Update Profile</button></form>
+<head>
+	<link href="{% static 'css/ok.css' %}" rel="stylesheet">
+</head>
 
+<div id = "edit">
+	<br/><br/><br/><br/>
+	<h1>Edit Settings...</h1>
+
+	<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}	
+		{{ form.as_p }}
+		Parolni o'zgartirish uchun <a  href="{% url 'password_changing' user.profile.id  %}"> bu yerni bosing </a>
+		<br/><br/> 	
+		<button class="btn btn-primary">Update Profile</button></form>
+
+	</div>
+	<br/>
 </div>
-<br/>
+      
 {% endblock %}

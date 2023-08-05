@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<h1>Register...</h1>
-<br/><br/>
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}	
-	{{ form.as_p }}
-	<button class="btn btn-primary">Register</button>
+
+<head>
+	<link href="{% static 'css/ok.css' %}" rel="stylesheet">
+</head>
+<div id = "log">
+	<br/><br/><br/><br/>
+	<h1>Ro'yxatdan o'tish</h1>
+	<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}	
+		{{ form.as_p }}
+		<button class="btn btn-primary">Register</button>
+	</div>
+	<br/>
 </div>
-
-
 
 {% endblock %} 

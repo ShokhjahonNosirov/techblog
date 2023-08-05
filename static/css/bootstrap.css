@@ -3165,18 +3165,15 @@ tbody.collapse.show {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  min-width: 5rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
   color: #292b2c;
-  text-align: left;
+  text-align: none;
   list-style: none;
-  background-color: #fff;
-  -webkit-background-clip: padding-box;
-          background-clip: padding-box;
+  background-color: None;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
 }
 
 .dropdown-divider {
@@ -4002,7 +3999,7 @@ tbody.collapse.show {
   right: 1rem;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 100px) {
   .navbar-toggleable .navbar-nav .dropdown-menu {
     position: static;
     float: none;
@@ -4064,7 +4061,7 @@ tbody.collapse.show {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 100px) {
   .navbar-toggleable-sm .navbar-nav .dropdown-menu {
     position: static;
     float: none;
@@ -4126,7 +4123,7 @@ tbody.collapse.show {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 500 ) {
   .navbar-toggleable-md .navbar-nav .dropdown-menu {
     position: static;
     float: none;
@@ -4188,7 +4185,7 @@ tbody.collapse.show {
   }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 100px) {
   .navbar-toggleable-lg .navbar-nav .dropdown-menu {
     position: static;
     float: none;
@@ -6172,8 +6169,14 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   border-top-left-radius: 0.25rem;
 }
 
+.rounded-circle1 {
+  border-radius:50%;
+  width:50px;
+  height:50px;
+}
+
 .rounded-circle {
-  border-radius: 50%;
+  border-radius:50%;
 }
 
 .rounded-0 {

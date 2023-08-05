@@ -1,26 +1,36 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-{% if user.is_authenticated %}
-	{% if user.id == profile.user.id %}
-		<h1>Edit Profile Page...</h1>
-		<br/><br/>
+<head>
+	<link href="{% static 'css/ok.css' %}" rel="stylesheet">
+</head>
+
+
+<div id = "edit">
+	{% if user.is_authenticated %}
+		{% if user.id == profile.user.id %}
+			<br/><br/><br/>
+			<h1>Profil sozlamalari</h1>
+			<br/>
+
+			<div class="form-group">
+				<form method="POST" enctype = "multipart/form-data">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button class="btn btn-primary">O'zgarishlarni saqlang</button>
+				</form>
+			</div>
+		{% else %}
+			Siz bu profilning egasi emassiz.
+		{% endif %}
 		
-		<div class="form-group">
-			<form method="POST" enctype = "multipart/form-data">
-				{% csrf_token %}
-				{{ form.as_p }}
-				<button class="btn btn-primary">Update Profile Page</button>
-		</div>
 	{% else %}
-		You are not the correct User To Edit This Page...
+		
+		Login qilishingiz kerak.
+		
 	{% endif %}
-	
-{% else %}
-	
-	You are not allowed. Please login to add a post.
-	
-{% endif %}
+
+</div>
 
 {% endblock %} 	

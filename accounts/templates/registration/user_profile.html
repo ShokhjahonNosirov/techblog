@@ -12,7 +12,7 @@
     <h1 class = "a1">Foydalanuvchi kabineti</h1>
     <br/>
 
-    <h3 >Username: {{user.username}}</h3>
+    <h3 >Username: {{page_user.user.username}}</h3>
     <br/><br/>
       
 
@@ -45,17 +45,19 @@
     </div>  
     <br/> 
 
+      {% if page_user.user.profile.id == user.profile.id %}
       <p>
         <a href="{% url 'logout' %}"> Logout </a>
       </p> 
 
-      {% if user.profile.id %}
+      
         <a href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page   <i style="font-size:24px" class="fa">&#xf040;</i> </a>
-      {% endif %}
+      
       <br/>
       <p>
         <a href="{% url 'edit_profile' user.profile.id %}"> Edit Profile     <i style="font-size:24px" class="fa">&#xf040;</i> </a> 
       </p>
+      {% endif %}
 
 </div>
 {% endblock %}	

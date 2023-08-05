@@ -16,10 +16,6 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </div><!-- end page-title -->
-<center>
-    <h2>We got your email {{message_name}} </h2>
-    <p> We will respond you shortly </p>
-</center>
 <section class="section wb">
     <div class="container">
         <div class="row">
@@ -31,19 +27,19 @@
                             <p>O'zbekistonda IT ni rivoljlantirishga xissa qo'shayotgan kichik startapplardan biri.</p>
            
                             <h4>Qanday yordam berishimiz mumkin</h4>
-                            <p>Sizda tayyor biznes bor va uni onlayn tarzda ham o'stirmoqchi bo'lsangiz, biz sizga o'z xizmatlarimizni taklif etamiz. </p>
+                            <p>Sizda tayyor biznes bor va uni onlayn tarzda ham o'stirmoqchi bo'lsangiz, biz sizga o'z xizmatlarimizni taklif etamiz.  </p>
      
                             <h4>Biz bilan bog'laning</h4>
                             <p>Har qanday savol va takliflaringizni bizga yo'llashingiz mumkin.</p>
                         </div>
                         <div class="col-lg-7">
-                            <form action = "{% url 'about' %}" class="form-wrapper" method = "post">
+                            <form action = "" class="form-wrapper" method = "post">
                                 {% csrf_token %} 
-                                <input type="text" name = "message-name" class="form-control" placeholder="Your name">
-                                <input type="email" name = "message-email" class="form-control" placeholder="Email address">
-                                <input type="text" name = "message-number" class="form-control" placeholder="Phone">
-                                <textarea name = "message" class="form-control" placeholder="Your message"></textarea>
-                                <button type="submit" class="btn btn-primary">Send <i class="fa fa-envelope-open-o"></i></button>
+                                <input type="text" name = "message-name" class="form-control" placeholder="ismingiz">
+                                <input type="email" name = "message-email" class="form-control" placeholder="email manzilingiz">
+                                <input type="text" name = "message-number" class="form-control" placeholder="telefon raqamingiz">
+                                <textarea name = "message" class="form-control" placeholder="xabar yoki taklifingizni yozing"></textarea>
+                                <button type="submit" class="btn btn-primary">Jo'natish <i class="fa fa-envelope-open-o"></i></button>
                             </form>
                         </div>
                     </div>

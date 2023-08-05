@@ -6,6 +6,8 @@
 
     <!DOCTYPE html>
     <html lang="en">
+    <head>
+        <link href="{% static 'css/ok.css' %}" rel="stylesheet">
     </head>
     <body>
         <div id="wrapper">
@@ -16,7 +18,7 @@
                             <div class="page-wrapper">
                                 <div class="blog-title-area text-center">
                                                 <ol class="breadcrumb hidden-xs-down">
-                                                    <li class="breadcrumb-item"><a href={% url 'home' %}>Home</a></li>
+                                                    <li class="breadcrumb-item"><a href={% url 'home' %}>Bosh sahifa</a></li>
                                                     <li class="breadcrumb-item active">{{post.post_title}}</li>
                                                 </ol>       
 
@@ -26,7 +28,7 @@
 
                                                 <div class="blog-meta big-meta">
                                                     <small>{{ post.publish }}</small>
-                                                    <small><a href="tech-author.html" title="">{{ post.post_author }}</a></small>
+                                                    <small>{{ post.post_author }}</small>
                                                     <small><i class="fa fa-eye"></i>{% get_hit_count for post %}</small>
                                                 </div>  <!-- end meta -->
 
@@ -55,10 +57,12 @@
 
                                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                             <h4><a href="#">Shokhjahon Nosirov</a></h4>
-                                            <p>Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet, consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget, finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Tech Blog!</p>
+                                            <p>Dasturchi, Injener. Men Toshkent shahar Turin politexnika universitetining Software Engineering fakultetiti talabasiman. Mening texno blogimga 
+                                            tashrif buyurganingiz uchun tashakkur! Quyida ijtimoiy tarmoqlari berilgan, bemalol murojaat qilishingiz mumkin )</p>
 
                                             <div class="topsocial">
-                                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                                                <a href="https://www.linkedin.com/in/shokhjahon-nosirov-5a5a221a7/" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                                <a href="https://t.me/Shokhjahon_Nosirov" data-toggle="tooltip" data-placement="bottom" title="Telegram"><i class="fa fa-telegram"></i></a>
                                                 <a href="https://www.instagram.com/shokhjahon_nosirov/" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
                                             </div><!-- end social -->
 
@@ -69,7 +73,7 @@
                                 <hr class="invis1">
 
                                 <div class="custombox clearfix">
-                                    <h4 class="small-title">You may also like</h4>
+                                    <h4 class="small-title">Sizga yoqishi mumkin</h4>
                                     <div class="row">
                                         {% for post in similar_posts %}
                                             <div class="col-lg-6">
@@ -106,11 +110,27 @@
                                             <div class="comments-list">
                                                 {% for comment in comments %}
                                                     <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="{% static 'upload/author_01.jpg' %}" alt="" class="rounded-circle">
+                                                        {% comment %} {% if users.profile_pic %}	
+                                                        <a class="media-left" href="{% url 'show_profile_page' comment.name.profile.id %}">
+                                                            <img src="{{ comment.name.profile_pic.url }}" alt="" class="rounded-circle">
                                                         </a> 
+                                                        {% else %} {% endcomment %}
+                                                        {% if user.profile.id %}
+                                                            {% if comment.name.profile.profile_pic %}
+                                                                <a class="media-left" href="{% url 'show_profile_page' comment.name.profile.id %}">
+                                                                    <img src="{{ comment.name.profile.profile_pic.url }}" alt="" class="rounded-circle1">
+                                                                </a> 
+                                                            {% else %}
+                                                                <a class="media-left" href="{% url 'show_profile_page' comment.name.profile.id %}">
+                                                                    <img src="{% static 'images/df.png' %}" alt="" class="rounded-circle1">
+                                                                </a> 
+                                                            {% endif %} 
+                                                        {% endif %}
+                                                        {% comment %} {% endif %} {% endcomment %}
                                                         <div class="media-body">
-                                                            <h4 class="media-heading user_name">{{ comment.name }} <small>{{ comment.created }}</small></h4>
+                                                            {% if user.profile.id %}
+                                                                <h4 class="media-heading user_name"><a href="{% url 'show_profile_page' comment.name.profile.id %}">{{ comment.name }}</a> <small>{{ comment.created }}</small></h4>
+                                                            {% endif %}
 
                                                             <p>{{ comment.body|linebreaks }}</p>   
 
@@ -134,7 +154,7 @@
                                                    <input type="text" name="body">
                                                 </br></br>                                                     
                                                     {% csrf_token %}
-                                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                                <button type="submit" class="btn btn-primary btn-lg">Qo'shish</button>
                                             </form>
                                         </div>
                                     </div>
@@ -142,6 +162,24 @@
                                 {% else %}
                                 <a class="nav-link" href="{% url 'login' %}">Komment qo'shish uchun iltimos tizimga kiring.</a> </br></br></br>
                                 {% endif %}
+                                
+
+                                <form action="{% url 'blog_like' post.publish.year post.publish.month post.publish.day post.slug %}" method="POST">
+                                    {% csrf_token %}
+                                {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                                    {% if like_status %}
+                                        <button type="submit", name="post_id", value
+                                        ="{{ post.id }}", class="btn btn-danger btn-sm">Unlike</button> 
+                                    {% else %}
+                                        <button type="submit", name="post_id", value
+                                        ="{{ post.id }}", class="btn btn-block btn-primary"><i class="fa fa-thumbs-up"></i>Like</button>
+                                    {% endif %}
+                                {% comment %} {% else %}
+                                    <small><a class="nav-link" href="{% url 'login' %}">Login</a>to like</small>
+                                    {% endif %} {% endcomment %}
+                                    - {{ post.total_likes }} Likes
+                                </form>
+
 
                             </div><!-- end page-wrapper -->
                         </div><!-- end col -->
@@ -150,20 +188,39 @@
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             
                             <div class="sidebar">
-                                <div class="widget">
+                                {% comment %} <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="{% static 'upload/bird.jpg' %}" width="300" height="400">
+                                            <img src="{% static 'upload/ad.jpg' %}" width="300" height="400">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
-                                </div><!-- end widget -->
+                                </div><!-- end widget --> {% endcomment %}
 
+                             
+                                
+                                {% comment %} <div class="widget">
+                                    <div class="banner-spot clearfix">
+                                        <div class="banner-img">
+                                            <img src="{% static 'upload/ad.jpg' %}" width="500" height="300">
+                                        </div><!-- end banner-img -->
+                                    </div><!-- end banner -->
+                                </div><!-- end widget --> {% endcomment %}
+                                <br>
+                                <div class="widget">
+                                    <h5 id="alert">Markaziy Bank ma'lumotlariga ko'ra {% now "SHORT_DATE_FORMAT" %} sanadagi valyuta kurslari</h5>
+                                    <br>
+                                        {% for k,v in pd.items %}  
+                                            <p> 1 {{k}} : {{v}} so'm </p>
+                                            <hr>
+                                        {% endfor %} 
+                                </div><!-- end widget -->   
+                                
                                 <div class="widget">
                                     <h2 class="widget-title">Eng ko'p ko'rilgan postlar</h2>
                                     <div class="blog-list-widget">
                                         <div class="list-group">
                                             {% for p in popular_posts %}
-                                                <a href="{{ p.get_absolute_url }}"" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <a href="{{ p.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start">
                                                     <div class="w-100 justify-content-between">
                                                         <img src="{{ p.header_image.url }}" alt="" class="img-fluid float-left">
                                                         <h5 class="mb-1">{{p.post_title}}</h5>
@@ -173,15 +230,24 @@
                                             {% endfor %}
                                         </div>
                                     </div><!-- end blog-list -->
-                                </div><!-- end widget -->                                
+                                </div><!-- end widget -->  
                                 
+
                                 <div class="widget">
-                                    <div class="banner-spot clearfix">
-                                        <div class="banner-img">
-                                            <img src="{% static 'upload/bird.jpg' %}" width="500" height="300">
-                                        </div><!-- end banner-img -->
-                                    </div><!-- end banner -->
-                                </div><!-- end widget -->
+                                    <p class = "salovot">(Salovot)</p>
+                                    <p class = "salovot">Allohumma Solli A'la Sayiddina Muhammadin va A'la Ali Sayiddina Muhammad</p>
+                                    <br>
+                                    <p class = "salovot">(Ma'nosi)</p>
+                                    <p class = "salovot">Allohim, Sayyidimiz Hazrati Muhammadga (s.a.v) va Sayyidimiz Hazrati Muhhammadning (s.a.v) Oila-Ahliga Raxmat Aylagil.</p>
+                                    <hr>
+                                    <br>
+                                    <p class = "salovot">(Istig'for)</p>
+                                    <p class = "salovot">Astag'firullohallaziy Laa Ilaha Illa Huval Hayyul Qoyyum va Atubu Ilayh.</p>
+                                    <br>
+                                    <p class = "salovot">(Ma'nosi)</p>
+                                    <p class = "salovot"> Hay (Tirik) va Qayyum (Abadiy) sifatli Zotdan o'zga iloh yo'q, Unga istig'for aytaman va Unga tavba qilaman.</p>
+                                </div><!-- end widget --> 
+
                             </div><!-- end sidebar -->
                         </div><!-- end col -->
                     </div><!-- end row -->

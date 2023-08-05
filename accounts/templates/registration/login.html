@@ -1,27 +1,34 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<h1>Login...</h1>
-<br/><br/>
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}	
-<div class="mb-3">
-    <input type="text" class="form-control" name = "username" placeholder = "Username">
+<head>
+	<link href="{% static 'css/ok.css' %}" rel="stylesheet">
+</head>
+
+<div id = "log">    
+    <br/><br/><br/><br/><br/>
+    <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}	
+    <div class="mb-3">
+        <input type="text" class="form-control" name = "username" placeholder = "Username">
+    </div>
+    <div class="mb-3">
+        <input type="password" class="form-control" name ="password" placeholder = "Password">
+    </div>	
+    <br/>
+        <button class="btn btn-primary">Login</button>
+    </div>
+    <br/><br/><br/><br/>
+    <h5> Ro'yxatdan o'tmaganmisiz? Unda bu yerdan <a  href="{% url 'register' %}">Ro'yxatdan o'ting</a> </h5>
+
+    <br/>
+
+    <h5> Parolni eslay olmasangiz, uni <a  href="{% url 'reset_password' %}">bu yerdan qayta o'rnating.</a> </h5>
+
+    <br/><br/><br/><br/><br/>
+
 </div>
-<div class="mb-3">
-    <input type="password" class="form-control" name ="password" placeholder = "Password">
-</div>	
-<br/>
-	<button class="btn btn-primary">Login</button>
-</div>
-<br/><br/><br/><br/>
-<h5> Not Registered? Sign Up <a  href="{% url 'register' %}">Here...</a> </h5>
 
-<br/>
-
-<h5> Can't remeber your password, reset it <a  href="{% url 'reset_password' %}">Here...</a> </h5>
-
-<br/><br/><br/><br/><br/>
 {% endblock %} 
