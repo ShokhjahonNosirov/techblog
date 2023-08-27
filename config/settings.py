@@ -163,4 +163,4 @@ EMAIL_HOST_PASSWORD = 'qajaqfhyeunalkqy'
 # EMAIL_HOST_PASSWORD = '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' #sg
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# checking time 2
+# checking time 3
