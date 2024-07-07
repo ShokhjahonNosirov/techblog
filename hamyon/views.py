@@ -8,6 +8,7 @@ from hitcount.views import HitCountDetailView
 from accounts.forms import CommentForm
 from taggit.models import Tag
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 import requests
 
 
@@ -154,13 +155,21 @@ def AboutView(request):
         message = request.POST['message']
         
         # send an email
-        send_mail(
-            message_name, #subject
-            message, #message
-            message_email, #from email
-            ['iamshokhjahon@gmail.com'], #to email , kop yozish un vergul qoyb yozb keturasan
-            fail_silently=False,
-        )
+        # send_mail(
+        #     message_name, #subject
+        #     message, #message
+        #     'iamnosirov2@gmail.com', #from email
+        #     ['shokhjahonnosirov@gmail.com'], #to email , kop yozish un vergul qoyb yozb keturasan
+        #     fail_silently=False,
+        # )
+
+        email = EmailMessage(
+        subject=message_name,
+        body=message,
+        from_email="iamshokhjahon@gmail.com",
+        to=["shokhjahonnosirov@gmail.com"])
+
+        email.send()
 
         contact.name = message_name    # 113-116 databasega save qilish uchun 
         contact.email = message_email
