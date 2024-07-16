@@ -309,6 +309,37 @@ a:focus {
     border-color: #00B6F1 !important;
 }
 
+.tw-button.btn-danger {
+    /* width: 80px; */
+    background: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
+}
+
+.icon-button {
+    width: 55px; /* Set the width of the icon */
+    height: 55px; /* Set the height of the icon */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Make the icons circular */
+    font-size: 1.9em; /* Adjust the size of the icons */
+    color: white;
+    cursor: pointer;
+}
+
+.icon-button.like {
+    background: #15c115;
+}
+
+.icon-button.unlike {
+    background: #e83131; /* Red color */
+}
+
+.likes-count {
+    margin-left: 5px; /* Adjust the value as needed for the desired space */
+}
+
 @media (max-width: 1080px) {
     .first-section .blog-meta h4 {
         font-size: 18px;

@@ -61,7 +61,7 @@
                                             tashrif buyurganingiz uchun tashakkur! Quyida ijtimoiy tarmoqlari berilgan, bemalol murojaat qilishingiz mumkin )</p>
 
                                             <div class="topsocial">
-                                                <a href="https://www.linkedin.com/in/shokhjahon-nosirov-5a5a221a7/" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                                <a href="https://www.linkedin.com/in/shohjahon-nosirov-5a5a221a7/" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
                                                 <a href="https://t.me/Shokhjahon_Nosirov" data-toggle="tooltip" data-placement="bottom" title="Telegram"><i class="fa fa-telegram"></i></a>
                                                 <a href="https://www.instagram.com/shokhjahon_nosirov/" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
                                             </div><!-- end social -->
@@ -163,23 +163,23 @@
                                 <a class="nav-link" href="{% url 'login' %}">Komment qo'shish uchun iltimos tizimga kiring.</a> </br></br></br>
                                 {% endif %}
                                 
+                                
+                                <div class="col-lg-12">
+                                    <form action="{% url 'blog_like' post.publish.year post.publish.month post.publish.day post.slug %}" method="POST">
+                                        {% csrf_token %}
+                                        {% if like_status %}
+                                            <div class="icon-button unlike" onclick="this.parentElement.submit();" name="post_id" value="{{ post.id }}">
+                                                <i class="fa fa-thumbs-down"></i> 
+                                            </div>
+                                        {% else %}
+                                            <div class="icon-button like" onclick="this.parentElement.submit();" name="post_id" value="{{ post.id }}">
+                                                <i class="fa fa-thumbs-up"></i> 
+                                            </div>
+                                        {% endif %}
+                                            <span class="likes-count"><b>{{ post.total_likes }}</b></span>
 
-                                <form action="{% url 'blog_like' post.publish.year post.publish.month post.publish.day post.slug %}" method="POST">
-                                    {% csrf_token %}
-                                {% comment %} {% if user.is_authenticated %} {% endcomment %}
-                                    {% if like_status %}
-                                        <button type="submit", name="post_id", value
-                                        ="{{ post.id }}", class="btn btn-danger btn-sm">Unlike</button> 
-                                    {% else %}
-                                        <button type="submit", name="post_id", value
-                                        ="{{ post.id }}", class="btn btn-block btn-primary"><i class="fa fa-thumbs-up"></i>Like</button>
-                                    {% endif %}
-                                {% comment %} {% else %}
-                                    <small><a class="nav-link" href="{% url 'login' %}">Login</a>to like</small>
-                                    {% endif %} {% endcomment %}
-                                    - {{ post.total_likes }} Likes
-                                </form>
-
+                                    </form>
+                                </div>
 
                             </div><!-- end page-wrapper -->
                         </div><!-- end col -->
